@@ -17,9 +17,12 @@ Pour chaque exercice, vous retrouverez trois niveaux de difficulté :
 
 ## Plan de cours 🗺️
 
-<!--- 
-- [ ] Chapitre
--->
+- [ ] [Présentation](./01_Presentation.md)
+- [ ] Premiers pas
+- [ ] Images et conteneurs
+- [ ] Réseau et volumes
+- [ ] Dockerfile
+- [ ] Docker compose
 
 ## Ressources 👜
 

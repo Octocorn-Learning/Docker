@@ -9,4 +9,4 @@ contributors:
 
 # Index
 
-- [Intitulé](./cours/nom.md)
+- [Présentation](./cours/01_Presentation.slides.md)
