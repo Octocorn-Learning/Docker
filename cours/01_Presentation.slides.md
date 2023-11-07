@@ -1,5 +1,5 @@
 ---
-title: Template
+title: Docker - Présentation
 theme: solarized
 author: Alexandre Devos
 company: Octocorn
@@ -207,6 +207,15 @@ sources:
 - Est l'espace dans lequel est exécutée l'application
 - Contient une application et ses dépendances
 
+----
+
+### Docker
+## Gardez en tête...
+
+- Un conteneur est **dépendant** d'une image
+- Un conteneur est **ephemère** !
+- Un conteneur est **complet** et **indépendant**
+
 ---
 
 ### Installation
@@ -229,4 +238,4 @@ sources:
 
 ## La suite !
 
-- [Retour à l'index](/index.md)
+- [Premiers pas](./02_Permiers_pas.slides.md)
