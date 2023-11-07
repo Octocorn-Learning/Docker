@@ -42,8 +42,8 @@
 
 > Vous devrez vous créer un compte DockerHub
 </script></section><section data-markdown><script type="text/template">
-### Play with Docker
-## Créer un conteneur
+## Play with Docker
+#### Créer un conteneur
 
 
 - Cliquez sur `+ ADD NEW INSTANCE`
@@ -52,8 +52,8 @@
 
 > Si vous souhaitez pratiquer les commandes sans installation !
 </script></section><section data-markdown><script type="text/template">
-### En local
-## Hello World
+## En local
+#### Hello World
 
 
 - Démarrez Docker Desktop
@@ -70,8 +70,8 @@
 
 ![Docker Lifecycle](assets/docker-lifecycle.jpg) <!-- .element width="70%" -->
 </script></section><section data-markdown><script type="text/template">
-### Cycle de vie
-## Pull de l'image
+## Cycle de vie
+#### Pull de l'image
 
 
 - Le moteur vérifie la présence de l'image en local,
@@ -84,8 +84,8 @@
 
 > `docker pull <nom_image>`
 </script></section><section data-markdown><script type="text/template">
-### Cycle de vie
-## Création du conteneur
+## Cycle de vie
+#### Création du conteneur
 
 
 - À partir d'une image présente en local, le moteur crée un conteneur
@@ -94,8 +94,8 @@
 
 > `docker create <nom_image> [options]`
 </script></section><section data-markdown><script type="text/template">
-### Cycle de vie
-## Exécution du conteneur
+## Cycle de vie
+#### Exécution du conteneur
 
 
 - Le conteneur est lancé,
@@ -104,8 +104,8 @@
 
 > `docker start <nom_conteneur>`
 </script></section><section data-markdown><script type="text/template">
-### Cycle de vie
-## La commande magique !
+## Cycle de vie
+#### La commande magique !
 
 
 - Taper systématiquement `docker pull`, `docker create` puis `docker start` est fastidieux
@@ -114,8 +114,8 @@
 
 > `docker run <nom_image> [options]`
 </script></section><section data-markdown><script type="text/template">
-### Cycle de vie
-## Arrêt du conteneur
+## Cycle de vie
+#### Arrêt du conteneur
 
 
 - Le conteneur est arrêté,
@@ -127,8 +127,8 @@
 > `docker stop <nom_conteneur>`  
 > `docker start <nom_conteneur>`
 </script></section><section data-markdown><script type="text/template">
-### Cycle de vie
-## Pause du conteneur
+## Cycle de vie
+#### Pause du conteneur
 
 
 - Le conteneur est mis en pause,
@@ -142,8 +142,8 @@
 > `docker pause <nom_conteneur>`  
 > `docker unpause <nom_conteneur>`
 </script></section><section data-markdown><script type="text/template">
-### Cycle de vie
-## Suppression du conteneur
+## Cycle de vie
+#### Suppression du conteneur
 
 
 - Le conteneur est supprimé.
@@ -158,8 +158,8 @@
 
 ![Docker Lifecycle](assets/docker-lifecycle.jpg) <!-- .element width="70%" -->
 </script></section><section data-markdown><script type="text/template">
-### Getting started
-## First step !
+## Getting started
+#### First step !
 
 `docker run -d -p 80:80 docker/getting-started`
 
@@ -174,13 +174,13 @@
 
 <aside class="notes"><p>Nous reviendrons sur les ports et les réseaux plus tard</p>
 </aside></script></section><section data-markdown><script type="text/template">
-### Getting started
-## Vérification
+## Getting started
+#### Vérification
 
 > Le conteneur est toujours allumé. Pourquoi ?
 </script></section><section data-markdown><script type="text/template">
-### Getting started
-## Vérification
+## Getting started
+#### Vérification
 
 
 - `docker ps` : Liste les conteneurs en cours d'exécution
@@ -191,8 +191,8 @@
 
 > Il est possible de taper les 4 premiers caractères l'ID du conteneur au lieu de son nom.
 </script></section><section data-markdown><script type="text/template">
-### Getting started
-## Vérification
+## Getting started
+#### Vérification
 
 - Sur les logs, on peut voir qu'un serveur est lancé sur le port 80
 
@@ -204,8 +204,8 @@
 
 <aside class="notes"><p>./Espace formateur/demos/01_Getting_started.md</p>
 </aside></script></section><section data-markdown><script type="text/template">
-### Getting started
-## Naviguer dans les fichiers
+## Getting started
+#### Naviguer dans les fichiers
 
 `docker exec -it <nom_conteneur> sh`
 
@@ -219,8 +219,8 @@
 
 <aside class="notes"><p><code>docker ps</code> pour récupérer l&#39;id du conteneur</p>
 </aside></script></section><section data-markdown><script type="text/template">
-### Getting started
-## Naviguer dans les fichiers
+## Getting started
+#### Naviguer dans les fichiers
 
 Commandes de base linux :
 
@@ -232,8 +232,8 @@ Commandes de base linux :
 
 - `exit` : Quitter le shell
 </script></section></section><section  data-markdown><script type="text/template">
-### Cheat sheet
-## Les commandes à retenir
+## Cheat sheet
+#### Les commandes à retenir
 
 - `docker run -d <nom_image>` : Créer et démarrer un conteneur
 
@@ -243,7 +243,7 @@ Commandes de base linux :
 </script></section><section  data-markdown><script type="text/template">
 # La suite !
 
-- [Les images](03_Les_Images.slides.md)</script></section></div>
+- [Les images](03_Images_et_conteneurs.slides.md)</script></section></div>
     </div>
 
     <script src="./dist/reveal.js"></script>

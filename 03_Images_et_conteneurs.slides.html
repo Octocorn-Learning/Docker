@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Docker - Images et conteneurs</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/solarized.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
+
+  <script type="text/javascript">
+      setTimeout(() => { 
+        fetch("https://raw.githubusercontent.com/Alex-Octocorn/logo/main/style.js") 
+          .then(script => script.text())
+          .then((script) => {
+            const head = document.querySelector("head");
+            const customCss = document.createElement("script");
+            customCss.type = "text/javascript";
+            customCss.appendChild(document.createTextNode(script));
+            head.appendChild(customCss);
+          });
+      });
+    </script></head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+
+![Docker logo](assets/docker-logo.png) <!-- .element width="70%" -->
+</script></section><section ><section data-markdown><script type="text/template">
+# Images
+
+- Une image est un **modèle** de conteneur.
+- Une image est **immuable**.
+- Une image est constituée de **couches**.
+- Elles sont créées à partir d'un **Dockerfile**.
+</script></section><section data-markdown><script type="text/template">
+## Layers
+
+![Docker Layers](./assets/docker-layers.png) <!-- .element width="70%" -->
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### bootfs
+
+- Contient le **noyau** et les **fichiers de démarrage**.
+- Ne peut être modifié.
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### Debian
+
+- Contient le système d'exploitation **Debian**.
+- Ne peut être modifié.
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### add emacs
+
+- Contient l'installation d'**Emacs**.
+- Dans cet exemple, il s'agit d'un **Dockerfile** avec une seule instruction `RUN apt-get install -y emacs`.
+- Peut être modifié.
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### add Apache
+
+- Contient l'installation d'**Apache**.
+- Dans cet exemple, il s'agit d'un **Dockerfile** avec une seule instruction `RUN apt-get install -y apache2`.
+- Il a pour origine le layer `add emacs`.
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### Container
+
+- Couche qui représente le **conteneur**.
+- Il a pour origine le layer `add Apache`.
+- Il est **éphémère**.
+- Il peut être modifié.
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### Question
+
+> Que se passe-t-il si je modifie un fichier dans le layer `Debian` ?  
+> Ou si j'installe un nouveau package linux ?
+
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### Réponse
+
+- Le fichier est ajouté dans le layer `Container`.
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### Question
+
+> Que se passe-t-il si j'ai besoin de modifier un fichier dans le layer `add emacs` ?
+</script></section><section data-markdown><script type="text/template">
+## Layers
+#### Réponse
+
+- Le fichier est 'copié' dans le layer `Container`.
+- La modification est faite dans la copie.
+- Le fichier n'est pas copié si on ne fait que le lire.
+
+> Plus le fichier est sur une couche haute, plus il est prioritaire.
+</script></section></section><section ><section data-markdown><script type="text/template">
+# Dockerfile
+
+- Un Dockerfile est un fichier de configuration d'une image.
+- Il contient une liste d'instructions.
+- C'est comme un script de création d'image.
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+#### Couches
+
+- Un dockerfile créera les couches de l'image.
+- Chaque instruction crée une couche*.
+- La limite est de 127 couches.
+
+> \* Chaque instruction qui nécessite une écriture dans le système de fichier linux.
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+#### Exemple
+
+```dockerfile
+FROM debian:latest # Image de base
+
+RUN apt-get update && apt-upgrade -y # Met à jour linux
+RUN apt-get install emacs # Installe emacs
+
+CMD ["emacs"] # Exécute la commande `emacs` au démarrage du conteneur
+```
+
+> Combien de couches ?
+
+<aside class="notes"><p>2 couches !</p>
+</aside></script></section><section data-markdown><script type="text/template">
+## Dockerfile
+
+Nous aborderons plus en détail les Dockerfile dans le chapitre associé.
+Avant ça : les commandes de base !
+</script></section></section><section ><section data-markdown><script type="text/template">
+# Commandes de base
+
+Docker dispose de sa propre syntaxe :
+
+```shell
+docker [contexte] <verb> <cible> [--option(s)]
+```
+
+- `contexte` : optionnel, permet de spécifier le scope de la commande (conteneur, image, réseau...)
+- `verb` : verbe de la commande (run, pull, create...)
+- `cible` : cible de la commande (nom de l'image, du conteneur...)
+- `option(s)` : option(s) de la commande (nom, réseau, volumes, ports...)
+</script></section><section data-markdown><script type="text/template">
+## Commandes de base
+#### run
+
+```shell
+docker container run [OPTIONS] <nomImage>[:<version>] [COMMANDS] [ARG...]
+```
+
+- Crée et démarre un conteneur à partir d'une image.
+- **options** : nom, réseau, volumes, ports... (`-d`, `-p`, `-v`, `--name`...)
+- **< nomImage>[:< version > ]** : nom de l'image à utiliser, et optionnellement sa version.
+- **commands** **arg** : commande à exécuter dans le conteneur (facultatif).
+</script></section><section data-markdown><script type="text/template">
+## Commandes de base
+#### Quelques options de run
+
+- `-d` : détache la console du conteneur
+- `-p <port>:<port>` : Définit le port utilisé
+- `-v <volume>` : Définit le volume utilisé
+- `--name <nom>` : Définit le nom du conteneur
+- `-it` : Permet d'interagir avec le conteneur
+
+> [RTFM](https://docs.docker.com/engine/reference/commandline/container_run/)
+
+<aside class="notes"><p>Par défaut, la dernière version de l&#39;image sera téléchargée</p>
+</aside></script></section><section data-markdown><script type="text/template">
+# Démonstration
+
+Création d'un conteneur nginx
+
+<aside class="notes"><p>docker run -dit -p 80:80 nginx // Puis go localhost:80</p>
+</aside></script></section><section data-markdown><script type="text/template">
+## Commandes de base
+#### Renommer un conteneur
+
+```shell
+docker container rename <CONTAINER> <NEW_NAME>
+```
+
+- Si aucun argument '--name' n'est spécifié, Docker crée un nom aléatoire.
+- On doit régulièrement renommer les conteneurs si on souhaite les utiliser pour réaliser des images
+</script></section><section data-markdown><script type="text/template">
+## Démonstration
+
+Renommer le conteneur nginx
+
+<aside class="notes"><p>docker container rename nom_actuel NGINX_Demo</p>
+</aside></script></section><section data-markdown><script type="text/template">
+## Commandes de base
+#### Autres commandes utiles
+
+- `docker ps -a` : Liste les conteneurs (actifs ou non)
+- `docker kill <CONTAINER>` : Arrête un conteneur (forcé)
+- `docker rm <CONTAINER> [-f]` : Supprime un conteneur
+- `docker container prune` : Supprime tous les conteneurs en 'dangling'
+
+> Il existe beaucoup de commandes, voir la [doc](https://docs.docker.com/engine/reference/commandline/docker/)
+</script></section><section data-markdown><script type="text/template">
+# La suite !
+
+[Volumes et Networks](04_Volumes_et_Networks.slides.md)</script></section></section></div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {}, queryOptions);
+    </script>
+
+    <script src="./_assets/theme.js"></script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>

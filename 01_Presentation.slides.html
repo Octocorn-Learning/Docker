@@ -32,16 +32,16 @@
 
 ![Docker logo](assets/docker-logo.png) <!-- .element width="70%" -->
 </script></section><section ><section data-markdown><script type="text/template">
-### Définiton
+## Définiton
 
 > Docker est un outil de gestion de **conteneurs applicatifs**.
 </script></section><section data-markdown><script type="text/template">
-### Origine
+## Origine
 
 - Dévoilé en mars 2013 par la société éponyme
 - Est considéré comme une révolution !
 </script></section><section data-markdown><script type="text/template">
-### Utilité
+## Utilité
 
 - Permet de lancer des environnements isolés : **conteneurs**
 - Déployables sur n'importe quel serveur !
@@ -49,18 +49,18 @@
 
 > Docker est comparable à la virtualisation, en mieux !
 </script></section><section data-markdown><script type="text/template">
-### Révolution !
+## Révolution !
 
 - Considéré comme une **virtualisation légère**
 - Installation et démarrage très rapide (quelques secondes)
 - Consomme très peu de ressources
 </script></section></section><section ><section data-markdown><script type="text/template">
 # Histoire
-## Bare metal > virtualisation > conteneurisation
+#### Bare metal > virtualisation > conteneurisation
 
 ![Docker logo](assets/docker-logo.png) <!-- .element width="70%" -->
 </script></section><section data-markdown><script type="text/template">
-### Les serveurs bare metal
+## Les serveurs bare metal
 
 ![Baremetal](assets/barematal.png) <!-- .element width="30%"-->
 
@@ -68,8 +68,8 @@
 - Estimation de la puissance nécessaire difficile
 - Amélioration de la puissance = achat de nouveaux serveurs
 </script></section><section data-markdown><script type="text/template">
-### Bare metal
-## Douleurs récurrentes
+## Bare metal
+#### Douleurs récurrentes
 
 - **Sous-exploitation** des serveurs
 - **Coûts** de maintenance et d'exploitation élevés
@@ -78,31 +78,31 @@
 - Pas de **portabilité** des applications
 - Pas d'**isolation** des applications
 </script></section><section data-markdown><script type="text/template">
-### Virtualisation
-## Origines
+## Virtualisation
+#### Origines
 
 - Développée dans les années 60 par IBM
 - Popularisée par VMWare dans les années 90
 - S'est démocratisée dans les années 2000
 - Intégrée à Windows grâce à Hyper-V
 </script></section><section data-markdown><script type="text/template">
-### Virtualisation
-## Fonctionnement
+## Virtualisation
+#### Fonctionnement
 
 - Un **HyperVisor** (HV) est installé sur un serveur (**Hôte**)
 - Des ressources (RAM, CPU, stockage) sont allouées à des **VMs**
 - Chaque VM est **isolée** des autres
 </script></section><section data-markdown><script type="text/template">
-### Virtualisation
-## Avantages
+## Virtualisation
+#### Avantages
 
 - **Isolation** des applications
 - **Portabilité** des applications (export de VM)
 - **Mise à l'échelle** facilitée
 - Un ordinateur = plusieurs ordinateurs
 </script></section><section data-markdown><script type="text/template">
-### La virtualisation
-## Concept
+## La virtualisation
+#### Concept
 
 ![virtual server](assets/virtualserver.gif) <!-- .element width="30%" align="left" -->
 
@@ -110,8 +110,8 @@
 - ...dans un ordinateur
 - Géré par un **hyperviseur**
 </script></section><section data-markdown><script type="text/template">
-### Virtualisation
-## Inconvénients
+## Virtualisation
+#### Inconvénients
 
 - **Lourd** : chaque VM contient un OS complet
 - **Lent** : démarrage d'une VM = démarrage d'un OS
@@ -120,20 +120,20 @@
 
 > À l'époque, les SSD n'étaient pas très répandus !
 </script></section><section data-markdown><script type="text/template">
-### Virtualisation
-## En image
+## Virtualisation
+#### En image
 
 ![Virtu Layers](./assets/vm-layers.png) <!-- .element width="50%" -->
 </script></section><section data-markdown><script type="text/template">
-### Conteneurisation
-## Révolution !
+## Conteneurisation
+#### Révolution !
 
 ![VM vs Container](./assets/vm-vs-container.jpg) <!-- .element width="70%" -->
 
 > Voyez-vous la différence ?
 </script></section><section data-markdown><script type="text/template">
-### Conteneurisation
-## Dans les grandes lignes
+## Conteneurisation
+#### Dans les grandes lignes
 
 - Les conteneurs utilisent le kernel de l'OS hôte
 - Il n'a pas besoin d'être réinstallé
@@ -142,73 +142,73 @@
 - Les **images** sont très légères
 - Partage facilité, sans problème de compatibilité
 </script></section></section><section ><section data-markdown><script type="text/template">
-### Docker
-## Quelques termes
+## Docker
+#### Quelques termes
 
 - **Conteneur** : Espace épéhémère isolé pour l'exécution d'une application
 - **Image** : Modèle de conteneur permettant la création
 - **Dockerfile** : Fichier de configuration d'une image
 </script></section><section data-markdown><script type="text/template">
-### Docker
-## Docker engine
+## Docker
+#### Docker engine
 
 - Le moteur de Docker
 - Gère les conteneurs, les images, les réseaux, les volumes...
 - Gère l'isolation, la sécurité, les ressources...
 </script></section><section data-markdown><script type="text/template">
-### Docker
-## Docker client
+## Docker
+#### Docker client
 
 - Permet de se connecter au moteur
 - Peut être installé localement ou à distance
 - Disponible en lignes de commandes
 - Disponible en graphique (Docker Desktop)
 </script></section><section data-markdown><script type="text/template">
-### Docker
-## DockerHub
+## Docker
+#### DockerHub
 
 - Librairie de conteneurs en ligne
 - Permet de télécharger des images
 - Permet de stocker/partager ses images
 </script></section><section data-markdown><script type="text/template">
-### Docker
-## Image Docker
+## Docker
+#### Image Docker
 
 - Comparable à une définition de classe en POO
 - Toujours en lecture seule
 - Doit être présente localement
 </script></section><section data-markdown><script type="text/template">
-### Docker
-## Conteneur
+## Docker
+#### Conteneur
 
 - Comparable à une instance d'une classe en POO
 - Est l'espace dans lequel est exécutée l'application
 - Contient une application et ses dépendances
 </script></section><section data-markdown><script type="text/template">
-### Docker
-## Gardez en tête...
+## Docker
+#### Gardez en tête...
 
 - Un conteneur est **dépendant** d'une image
 - Un conteneur est **ephemère** !
 - Un conteneur est **complet** et **indépendant**
 </script></section></section><section ><section data-markdown><script type="text/template">
-### Installation
-## Prérequis
+## Installation
+#### Prérequis
 
 - Docker est basé sur Linux
 - Il y a quelques années, il fallait installer une VM Linux
 - Grâce à WSL2, il est possible d'installer Docker sur Windows 10
 </script></section><section data-markdown><script type="text/template">
-### Installation
-## Liens
+## Installation
+#### Liens
 
 - [Linux](https://docs.docker.com/engine/install/)
 - [Windows](https://docs.docker.com/docker-for-windows/install/)
 - [Mac](https://docs.docker.com/docker-for-mac/install/)
 </script></section></section><section  data-markdown><script type="text/template">
-## La suite !
+# La suite !
 
-- [Premiers pas](./02_Permiers_pas.slides.md)</script></section></div>
+- [Premiers pas](./02_Premiers_pas.slides.md)</script></section></div>
     </div>
 
     <script src="./dist/reveal.js"></script>
