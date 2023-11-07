@@ -26,8 +26,8 @@ sources:
 
 ----
 
-### Play with Docker
-## Créer un conteneur
+## Play with Docker
+#### Créer un conteneur
 
 
 - Cliquez sur `+ ADD NEW INSTANCE`
@@ -38,8 +38,8 @@ sources:
 
 ----
 
-### En local
-## Hello World
+## En local
+#### Hello World
 
 
 - Démarrez Docker Desktop
@@ -60,8 +60,8 @@ Note: Le conteneur s'est arrêté après avoir affiché le message. Il est donc 
 
 ----
 
-### Cycle de vie
-## Pull de l'image
+## Cycle de vie
+#### Pull de l'image
 
 
 - Le moteur vérifie la présence de l'image en local,
@@ -76,8 +76,8 @@ Note: Le conteneur s'est arrêté après avoir affiché le message. Il est donc 
 
 ----
 
-### Cycle de vie
-## Création du conteneur
+## Cycle de vie
+#### Création du conteneur
 
 
 - À partir d'une image présente en local, le moteur crée un conteneur
@@ -88,8 +88,8 @@ Note: Le conteneur s'est arrêté après avoir affiché le message. Il est donc 
 
 ----
 
-### Cycle de vie
-## Exécution du conteneur
+## Cycle de vie
+#### Exécution du conteneur
 
 
 - Le conteneur est lancé,
@@ -100,8 +100,8 @@ Note: Le conteneur s'est arrêté après avoir affiché le message. Il est donc 
 
 ----
 
-### Cycle de vie
-## La commande magique !
+## Cycle de vie
+#### La commande magique !
 
 
 - Taper systématiquement `docker pull`, `docker create` puis `docker start` est fastidieux
@@ -112,8 +112,8 @@ Note: Le conteneur s'est arrêté après avoir affiché le message. Il est donc 
 
 ----
 
-### Cycle de vie
-## Arrêt du conteneur
+## Cycle de vie
+#### Arrêt du conteneur
 
 
 - Le conteneur est arrêté,
@@ -127,8 +127,8 @@ Note: Le conteneur s'est arrêté après avoir affiché le message. Il est donc 
 
 ----
 
-### Cycle de vie
-## Pause du conteneur
+## Cycle de vie
+#### Pause du conteneur
 
 
 - Le conteneur est mis en pause,
@@ -144,8 +144,8 @@ Note: Le conteneur s'est arrêté après avoir affiché le message. Il est donc 
 
 ----
 
-### Cycle de vie
-## Suppression du conteneur
+## Cycle de vie
+#### Suppression du conteneur
 
 
 - Le conteneur est supprimé.
@@ -164,8 +164,8 @@ Note: Le conteneur s'est arrêté après avoir affiché le message. Il est donc 
 
 ----
 
-### Getting started
-## First step !
+## Getting started
+#### First step !
 
 `docker run -d -p 80:80 docker/getting-started`
 
@@ -182,15 +182,15 @@ Note: Nous reviendrons sur les ports et les réseaux plus tard
 
 ----
 
-### Getting started
-## Vérification
+## Getting started
+#### Vérification
 
 > Le conteneur est toujours allumé. Pourquoi ?
 
 ----
 
-### Getting started
-## Vérification
+## Getting started
+#### Vérification
 
 
 - `docker ps` : Liste les conteneurs en cours d'exécution
@@ -203,8 +203,8 @@ Note: Nous reviendrons sur les ports et les réseaux plus tard
 
 ----
 
-### Getting started
-## Vérification
+## Getting started
+#### Vérification
 
 - Sur les logs, on peut voir qu'un serveur est lancé sur le port 80
 
@@ -220,8 +220,8 @@ Note: ./Espace formateur/demos/01_Getting_started.md
 
 ----
 
-### Getting started
-## Naviguer dans les fichiers
+## Getting started
+#### Naviguer dans les fichiers
 
 `docker exec -it <nom_conteneur> sh`
 
@@ -237,8 +237,8 @@ Note: `docker ps` pour récupérer l'id du conteneur
 
 ----
 
-### Getting started
-## Naviguer dans les fichiers
+## Getting started
+#### Naviguer dans les fichiers
 
 Commandes de base linux :
 
@@ -252,8 +252,8 @@ Commandes de base linux :
 
 ---
 
-### Cheat sheet
-## Les commandes à retenir
+## Cheat sheet
+#### Les commandes à retenir
 
 - `docker run -d <nom_image>` : Créer et démarrer un conteneur
 
@@ -265,4 +265,4 @@ Commandes de base linux :
 
 # La suite !
 
-- [Les images](03_Les_Images.slides.md)
+- [Les images](03_Images_et_conteneurs.slides.md)

@@ -14,20 +14,20 @@ sources:
 
 ---
 
-### Définiton
+## Définiton
 
 > Docker est un outil de gestion de **conteneurs applicatifs**.
 
 ----
 
-### Origine
+## Origine
 
 - Dévoilé en mars 2013 par la société éponyme
 - Est considéré comme une révolution !
 
 ----
 
-### Utilité
+## Utilité
 
 - Permet de lancer des environnements isolés : **conteneurs**
 - Déployables sur n'importe quel serveur !
@@ -37,7 +37,7 @@ sources:
 
 ----
 
-### Révolution !
+## Révolution !
 
 - Considéré comme une **virtualisation légère**
 - Installation et démarrage très rapide (quelques secondes)
@@ -46,13 +46,13 @@ sources:
 ---
 
 # Histoire
-## Bare metal > virtualisation > conteneurisation
+#### Bare metal > virtualisation > conteneurisation
 
 ![Docker logo](assets/docker-logo.png) <!-- .element width="70%" -->
 
 ----
 
-### Les serveurs bare metal
+## Les serveurs bare metal
 
 ![Baremetal](assets/barematal.png) <!-- .element width="30%"-->
 
@@ -62,8 +62,8 @@ sources:
 
 ----
 
-### Bare metal
-## Douleurs récurrentes
+## Bare metal
+#### Douleurs récurrentes
 
 - **Sous-exploitation** des serveurs
 - **Coûts** de maintenance et d'exploitation élevés
@@ -74,8 +74,8 @@ sources:
 
 ----
 
-### Virtualisation
-## Origines
+## Virtualisation
+#### Origines
 
 - Développée dans les années 60 par IBM
 - Popularisée par VMWare dans les années 90
@@ -84,8 +84,8 @@ sources:
 
 ----
 
-### Virtualisation
-## Fonctionnement
+## Virtualisation
+#### Fonctionnement
 
 - Un **HyperVisor** (HV) est installé sur un serveur (**Hôte**)
 - Des ressources (RAM, CPU, stockage) sont allouées à des **VMs**
@@ -93,8 +93,8 @@ sources:
 
 ----
 
-### Virtualisation
-## Avantages
+## Virtualisation
+#### Avantages
 
 - **Isolation** des applications
 - **Portabilité** des applications (export de VM)
@@ -103,8 +103,8 @@ sources:
 
 ----
 
-### La virtualisation
-## Concept
+## La virtualisation
+#### Concept
 
 ![virtual server](assets/virtualserver.gif) <!-- .element width="30%" align="left" -->
 
@@ -114,8 +114,8 @@ sources:
 
 ----
 
-### Virtualisation
-## Inconvénients
+## Virtualisation
+#### Inconvénients
 
 - **Lourd** : chaque VM contient un OS complet
 - **Lent** : démarrage d'une VM = démarrage d'un OS
@@ -126,15 +126,15 @@ sources:
 
 ----
 
-### Virtualisation
-## En image
+## Virtualisation
+#### En image
 
 ![Virtu Layers](./assets/vm-layers.png) <!-- .element width="50%" -->
 
 ----
 
-### Conteneurisation
-## Révolution !
+## Conteneurisation
+#### Révolution !
 
 ![VM vs Container](./assets/vm-vs-container.jpg) <!-- .element width="70%" -->
 
@@ -142,8 +142,8 @@ sources:
 
 ----
 
-### Conteneurisation
-## Dans les grandes lignes
+## Conteneurisation
+#### Dans les grandes lignes
 
 - Les conteneurs utilisent le kernel de l'OS hôte
 - Il n'a pas besoin d'être réinstallé
@@ -154,8 +154,8 @@ sources:
 
 ---
 
-### Docker
-## Quelques termes
+## Docker
+#### Quelques termes
 
 - **Conteneur** : Espace épéhémère isolé pour l'exécution d'une application
 - **Image** : Modèle de conteneur permettant la création
@@ -163,8 +163,8 @@ sources:
 
 ----
 
-### Docker
-## Docker engine
+## Docker
+#### Docker engine
 
 - Le moteur de Docker
 - Gère les conteneurs, les images, les réseaux, les volumes...
@@ -172,8 +172,8 @@ sources:
 
 ----
 
-### Docker
-## Docker client
+## Docker
+#### Docker client
 
 - Permet de se connecter au moteur
 - Peut être installé localement ou à distance
@@ -182,8 +182,8 @@ sources:
 
 ----
 
-### Docker
-## DockerHub
+## Docker
+#### DockerHub
 
 - Librairie de conteneurs en ligne
 - Permet de télécharger des images
@@ -191,8 +191,8 @@ sources:
 
 ----
 
-### Docker
-## Image Docker
+## Docker
+#### Image Docker
 
 - Comparable à une définition de classe en POO
 - Toujours en lecture seule
@@ -200,8 +200,8 @@ sources:
 
 ----
 
-### Docker
-## Conteneur
+## Docker
+#### Conteneur
 
 - Comparable à une instance d'une classe en POO
 - Est l'espace dans lequel est exécutée l'application
@@ -209,8 +209,8 @@ sources:
 
 ----
 
-### Docker
-## Gardez en tête...
+## Docker
+#### Gardez en tête...
 
 - Un conteneur est **dépendant** d'une image
 - Un conteneur est **ephemère** !
@@ -218,8 +218,8 @@ sources:
 
 ---
 
-### Installation
-## Prérequis
+## Installation
+#### Prérequis
 
 - Docker est basé sur Linux
 - Il y a quelques années, il fallait installer une VM Linux
@@ -227,8 +227,8 @@ sources:
 
 ----
 
-### Installation
-## Liens
+## Installation
+#### Liens
 
 - [Linux](https://docs.docker.com/engine/install/)
 - [Windows](https://docs.docker.com/docker-for-windows/install/)
@@ -236,6 +236,6 @@ sources:
 
 ---
 
-## La suite !
+# La suite !
 
 - [Premiers pas](./02_Premiers_pas.slides.md)
