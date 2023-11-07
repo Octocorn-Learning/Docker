@@ -238,4 +238,4 @@ sources:
 
 ## La suite !
 
-- [Premiers pas](./02_Permiers_pas.slides.md)
+- [Premiers pas](./02_Premiers_pas.slides.md)

@@ -1,8 +1,12 @@
-# Nom du cours
+# Docker
 
 ## Description et objectifs 🎯
 
-<!--- Décrire le cours en quelques lignes -->
+L'objectif de ce cours est d'avoir une première approche de Docker.
+Il couvrira l'ensemble des fonctionnalités de base, de la ligne de commande 
+jusqu'à la création de conteneurs et de stacks applicatives.
+
+Lien vers les slides : https://octocorn-learning.github.io/Docker/
 
 ## Exercices 💪
 
@@ -17,8 +21,8 @@ Pour chaque exercice, vous retrouverez trois niveaux de difficulté :
 
 ## Plan de cours 🗺️
 
-- [ ] [Présentation](./01_Presentation.md)
-- [ ] Premiers pas
+- [x] [Présentation](./cours/01_Presentation.slides.md)
+- [x] [Premiers pas](./cours/02_Premiers_pas.slides.md)
 - [ ] Images et conteneurs
 - [ ] Réseau et volumes
 - [ ] Dockerfile
