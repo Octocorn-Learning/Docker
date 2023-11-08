@@ -27,13 +27,184 @@
     </script></head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template">
+      <div class="slides"><section ><section data-markdown><script type="text/template">
 
-# Dockerfile
+# Custom Images
+### Docker commit
 
 ![Docker logo](assets/docker-logo.png) <!-- .element width="70%" align="left" -->
+</script></section><section data-markdown><script type="text/template">
+## Custom images
+### Introduction
 
-----</script></section></div>
+- La création d'image via ligne de commande est **fastidieuse**.
+- Les conteneurs étant locaux, ils sont **difficiles à partager**.
+- Deux méthodes pour créer une image : 
+  - Via **ligne de commande** et envoi sur un **registre**
+  - Via **Dockerfile**
+</script></section><section data-markdown><script type="text/template">
+## Custom Images
+### Ligne de commandes
+
+- Création d'un conteneur
+- Modification du conteneur
+- Création d'une image à partir du conteneur
+- Partage de l'image sur un **registre**
+
+> Cette méthode est relativement peu utilisée !
+</script></section><section data-markdown><script type="text/template">
+## Custom Images
+### Docker commit
+
+- La commande docker commit permet de créer une image à partir d'un conteneur
+
+Syntaxe :
+
+```shell
+docker commit [OPTIONS] CONTAINER <REPOSITORY<:TAG>>
+```
+</script></section><section data-markdown><script type="text/template">
+## Custom Images
+### Démonstration
+
+Création d'une image ubuntu custom
+
+<aside class="notes"><p>./demo/04_commit.md</p>
+</aside></script></section><section data-markdown><script type="text/template">
+## En conclusion
+
+- Bien que ça puisse être pratique, ça reste **fastidieux**.
+- Il est possible d'automatiser tout ça avec un **Dockerfile** !
+</script></section></section><section ><section data-markdown><script type="text/template">
+# Custom Images
+### Dockerfile
+
+![Docker logo](assets/docker-logo.png) <!-- .element width="70%" align="left" -->
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Définition
+
+- Un Dockerfile est un **script** qui permet de construire des images.
+- Il est constitué d'une suite d'instructions, suivant une syntaxe définie.
+
+> [RTFM](https://docs.docker.com/engine/reference/builder/)
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Instructions courantes
+
+```dockerfile
+FROM # Définit l image de base (parent)
+LABEL # Ajoute des métadatas
+ARG # Variables utilisables uniquement par le dockerile
+ENV # Variables utilisables par le dockerfile ET les conteneurs créés
+RUN # Exécute une commande lors de la création de l image
+COPY # Permet de copier des fichiers
+ADD # Idem COPY, mais permet de décompresser les archives
+ENTRYPOINT # définit la commande de démarrage du conteneur
+CMD # Spécifie les arguments envoyés aux ENTRYPOINT sous forme de tableau ["cmd1", "cmd2"]
+WORKDIR # Définit le répertoire de travail utilisé au lancement par CMD et ENTRYPOINT
+EXPOSE # Définit le port exposé
+VOLUME # Définit le volume du conteneur
+USER # Désigne l utilisateur par défaut (root si non spécifié)
+```
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Le contexte docker
+
+- Le contexte docker est le répertoire dans lequel se trouve le Dockerfile.
+- Lors de la création de l'image, le contexte est envoyé au démon docker.
+- Le contexte est envoyé **en clair** au démon docker.
+- Il est donc **déconseillé** d'y mettre des fichiers sensibles.
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### .dockerignore
+
+- Permet de lister des fichiers à exclure du contexte.
+- Fonctionne comme un `.gitignore`.
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Commandes
+
+`docker build` : Construit une image à partir d'un Dockerfile
+
+```shell
+docker build [OPTIONS] PATH | URL | -
+```
+
+> Pour désigner le répertoire courant, on utilise `.`
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Exemple
+
+```shell
+docker build -t myimage:latest .
+```
+
+- `-t` : Tag l'image avec le nom `myimage` et le tag `latest`
+- `.` : Répertoire courant
+
+> Attention à ne pas oublier le point !
+
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Travail dirigé
+
+Montons ensemble un Dockerfile pour une application nodejs (express).
+
+<aside class="notes"><p>./Espace formateur/demos/05_DockerFile.md</p>
+</aside></script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### A vous de jouer !
+
+Réalisez l'exercice 1
+</script></section></section><section ><section data-markdown><script type="text/template">
+# Dockerfile
+## Multi-stage
+
+![Docker logo](assets/docker-logo.png) <!-- .element width="70%" align="left" -->
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Multi-stage
+
+- Permet de créer une image à partir d'une autre image.
+- Permet de **réduire la taille** de l'image finale.
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Objectif
+
+- La plupart des applications nécessitent des dépendances pour être compilées.
+- Ces dernières servent uniquement à la compilation et ne sont pas nécessaires à l'exécution.
+- Il est donc inutile de les inclure dans l'image finale.
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Exemple
+
+```dockerfile
+## Déclaration de la première étape
+FROM ubuntu:latest as first_stage
+RUN echo "Hello world" > /hello.txt
+
+FROM alpine:latest
+COPY --from=first_stage /hello.txt /hello.txt
+```
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Explications
+
+- On crée un fichier `hello.txt` dans un conteneur ubuntu.
+- On crée étape qui va copier le fichier `hello.txt` dans un conteneur alpine.
+- On utilise l'option `--from` pour spécifier l'étape à utiliser.
+- On peut utiliser autant d'étapes que nécessaire.
+- L'image finale sera la dernière étape.
+</script></section><section data-markdown><script type="text/template">
+## Dockerfile
+### Travail dirigé
+
+Montons ensemble un Dockerfile en multistage pour une application React.
+</script></section></section><section  data-markdown><script type="text/template">
+# La suite !
+
+[Docker Compose](06_Docker-Compose.md)</script></section></div>
     </div>
 
     <script src="./dist/reveal.js"></script>
