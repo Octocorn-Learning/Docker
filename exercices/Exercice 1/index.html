@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="application/javascript">
+      window.onload = capture;
+
+      function capture() {
+        document.onmousemove = moveCatEyeBalls;
+      }
+
+      function moveCatEyeBalls(e) {
+        let eyeBall_L = document.getElementById("eyeball-l");
+        let eyeBall_R = document.getElementById("eyeball-r");
+
+        const leftOrigX = computeCenterCoordinate(
+          eyeBall_L.getBoundingClientRect().right,
+          eyeBall_L.getBoundingClientRect().left
+        );
+        const rightOrigX = computeCenterCoordinate(
+          eyeBall_R.getBoundingClientRect().right,
+          eyeBall_R.getBoundingClientRect().left
+        );
+        const origY = computeCenterCoordinate(
+          eyeBall_L.getBoundingClientRect().top,
+          eyeBall_L.getBoundingClientRect().bottom
+        );
+
+        const leftEyeCenter = {
+          x: leftOrigX,
+          y: origY,
+        };
+
+        const rightEyeCenter = {
+          x: rightOrigX,
+          y: origY,
+        };
+
+        // compute eyes coordinates
+        const L_X = computeEyeCoordinate(e.pageX, leftEyeCenter.x);
+        const L_Y = computeEyeCoordinate(e.pageY, leftEyeCenter.y);
+        const R_X = computeEyeCoordinate(e.pageX, rightEyeCenter.x);
+        const R_Y = computeEyeCoordinate(e.pageY, rightEyeCenter.y);
+
+        // set eyes coordinates
+        eyeBall_L.style.setProperty("--left_eye_x", L_X + "px");
+        eyeBall_L.style.setProperty("--left_eye_y", L_Y + "px");
+        eyeBall_R.style.setProperty("--right_eye_x", R_X + "px");
+        eyeBall_R.style.setProperty("--right_eye_y", R_Y + "px");
+      }
+
+      function computeCenterCoordinate(c1, c2) {
+        return (c1 + c2) / 2;
+      }
+
+      function computeEyeCoordinate(mouseCoordinate, eyeCenterCoordinate) {
+        return (
+          7 + (4 * (mouseCoordinate - eyeCenterCoordinate)) / eyeCenterCoordinate
+        );
+      }
+    </script>
+    <style>
+        :root {
+            --left_eye_x: 7px;
+            --left_eye_y: 7px;
+            --right_eye_x: 7px;
+            --right_eye_y: 7px;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #a2d594;
+        }
+
+        .container {
+            height: 500px;
+            width: 350px;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .cat {
+            position: relative;
+            top: 150px;
+            left: 50px;
+        }
+
+        .face {
+            background-color: #33292b;
+            height: 90px;
+            width: 150px;
+            border-radius: 30px;
+        }
+
+        .ear-l,
+        .ear-r {
+            width: 0;
+            height: 0;
+            border-bottom: 50px solid #33292b;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            position: relative;
+            z-index: -1;
+        }
+
+        .ear-l {
+            bottom: 35px;
+            left: 3px;
+            transform: rotate(-30deg);
+        }
+
+        .ear-r {
+            bottom: 85px;
+            left: 112px;
+            transform: rotate(30deg);
+        }
+
+        .inner-l {
+            width: 0;
+            height: 0;
+            border-bottom: 40px solid #d36149;
+            border-left: 30px solid transparent;
+            position: relative;
+            right: 30px;
+        }
+
+        .inner-r {
+            width: 0;
+            height: 0;
+            border-bottom: 40px solid #d36149;
+            border-right: 25px solid transparent;
+            position: relative;
+        }
+
+        .eye-l,
+        .eye-r {
+            background-color: #d2873b;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .eye-l {
+            bottom: 75px;
+            left: 30px;
+        }
+
+        .eye-r {
+            bottom: 105px;
+            left: 100px;
+        }
+
+        .eyeball {
+            position: relative;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #262626;
+        }
+
+        #eyeball-l {
+            left: var(--left_eye_x);
+            top: var(--left_eye_y);
+        }
+
+        #eyeball-r {
+            left: var(--right_eye_x);
+            top: var(--right_eye_y);
+        }
+
+        .nose {
+            height: 0;
+            width: 0;
+            border-left: 7px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid #d36149;
+            position: relative;
+            bottom: 106px;
+            left: 75px;
+        }
+
+        .l1,
+        .l2 {
+            background-color: #d36149;
+            height: 8px;
+            width: 1px;
+        }
+
+        .l1 {
+            transform: rotate(45deg);
+            position: relative;
+            right: 4px;
+            bottom: 1px;
+        }
+
+        .l2 {
+            transform: rotate(-45deg);
+            position: relative;
+            bottom: 9px;
+            left: 2px;
+        }
+
+        .body {
+            background-color: #33292b;
+            height: 120px;
+            width: 110px;
+            position: relative;
+            left: 30px;
+            bottom: 10px;
+            border-radius: 0 70px 0 0;
+        }
+
+        .paw-l,
+        .paw-r {
+            background-color: #33292b;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .paw-l {
+            top: 112px;
+            left: 50px;
+        }
+
+        .paw-r {
+            top: 92px;
+            left: 0;
+        }
+
+        .tail {
+            background-color: #33292b;
+            width: 50px;
+            height: 17px;
+            position: relative;
+            border-radius: 0 20px 20px 0;
+            top: 63px;
+            left: 110px;
+        }
+
+        .shadow {
+            background-color: rgba(8, 8, 8, 0.05);
+            height: 30px;
+            width: 150px;
+            border-radius: 50%;
+            position: relative;
+            bottom: 18px;
+            left: 20px;
+            z-index: -1;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: 100px;
+        }
+    </style>
+
+    <title>Cat</title>
+</head>
+<body>
+    <div class="container">
+        <div class="cat">
+            <div class="face">
+                <div class="ear-l">
+                    <div class="inner-l"></div>
+                </div>
+                <div class="ear-r">
+                    <div class="inner-r"></div>
+                </div>
+                <div class="eye-l">
+                    <div class="eyeball" id="eyeball-l"></div>
+                </div>
+                <div class="eye-r">
+                    <div class="eyeball" id="eyeball-r"></div>
+                </div>
+                <div class="nose">
+                    <div class="l1"></div>
+                    <div class="l2"></div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="paw-l"></div>
+                <div class="paw-r"></div>
+                <div class="tail"></div>
+            </div>
+            <div class="shadow"></div>
+        </div>
+    </div>
+</body>
+</html>
