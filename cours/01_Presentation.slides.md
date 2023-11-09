@@ -238,4 +238,4 @@ sources:
 
 # La suite !
 
-- [Index](/index.html)
+- [Index](index.html)

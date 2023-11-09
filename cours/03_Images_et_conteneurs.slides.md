@@ -236,4 +236,4 @@ Note: docker container rename nom_actuel NGINX_Demo
 
 # La suite !
 
-- [Index](/index.html)
+- [Index](index.html)
