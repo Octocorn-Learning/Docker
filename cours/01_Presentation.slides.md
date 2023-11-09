@@ -238,4 +238,4 @@ sources:
 
 # La suite !
 
-- [Premiers pas](./02_Premiers_pas.slides.md)
+- [Index](/index.html)
