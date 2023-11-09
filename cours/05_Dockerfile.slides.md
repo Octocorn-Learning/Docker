@@ -225,4 +225,4 @@ Montons ensemble un Dockerfile en multistage pour une application React.
 
 # La suite !
 
-[Docker Compose](06_Docker-Compose.md)
+[Docker Compose](06_Docker-Compose.slides.md)

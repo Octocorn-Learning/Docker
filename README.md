@@ -24,9 +24,9 @@ Pour chaque exercice, vous retrouverez trois niveaux de difficulté :
 - [x] [Présentation](./cours/01_Presentation.slides.md)
 - [x] [Premiers pas](./cours/02_Premiers_pas.slides.md)
 - [x] [Images et conteneurs](./cours/03_Images_et_conteneurs.slides.md)
-- [ ] Réseau et volumes
-- [ ] Dockerfile
-- [ ] Docker compose
+- [x] Réseau et volumes
+- [x] Dockerfile
+- [x] Docker compose
 
 ## Ressources 👜
 

@@ -1,5 +1,5 @@
 ---
-title: Template
+title: Index
 theme: solarized
 author: Alexandre Devos
 company: Octocorn
@@ -14,4 +14,4 @@ contributors:
 - [Images et Conteneurs](03_Images_et_conteneurs.slides.md)
 - [Volumes et Networks](04_Volumes_et_Networks.slides.md)
 - [Dockerfile](05_Dockerfile.slides.md)
-- [Docker Compose](06_Docker-Compose.md)
+- [Docker Compose](06_Docker-Compose.slides.md)
