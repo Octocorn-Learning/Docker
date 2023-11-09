@@ -4,7 +4,7 @@
 
 ```bash
 root
-|   index.md # Table des matières
+|   00_index.slides.md # Table des matières
 |   exercices # Répertoire contenant les exercices
 |   |   01_exercice # Répertoire contenant l'exercice 01
 |   |   |   01_exercice.poussin.md 

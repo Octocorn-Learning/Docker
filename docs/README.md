@@ -22,7 +22,7 @@ npm i -g reveal-md
 Pour visualiser les slides, il faut lancer la commande suivante :
 
 ```bash
-reveal-md index.md
+reveal-md 00_index.slides.md
 ```
 
 ### Générer un site statique
