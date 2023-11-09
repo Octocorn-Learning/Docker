@@ -17,6 +17,10 @@ jobs:
           run: reveal-md ./cours --static --glob '*.slides.md'
         - name: run the apply_theme bash script
           run: bash ./apply_theme.sh
+        - name: remove index.html
+          run: rm ./_static/index.html
+        - name: rename 00_index.slides.html to index.html
+          run: mv ./_static/00_index.slides.html ./_static/index.html
         - name: push to gh-pages
           uses: JamesIves/github-pages-deploy-action@v4
           with:
