@@ -2,8 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>reveal-md</title>
-    <link rel="stylesheet" href="./dist/theme/black.css" id="theme" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Index</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/solarized.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
+
   <script type="text/javascript">
       setTimeout(() => { 
         fetch("https://raw.githubusercontent.com/Alex-Octocorn/logo/main/style.js") 
@@ -17,53 +25,68 @@
           });
       });
     </script></head>
-
   <body>
-    <ul>
-      <li>
-        <a href="00_index.slides.html" title="Index">
-            Index (00_index.slides.html)
-        </a>
-      </li>
-      <li>
-        <a href="01_Presentation.slides.html" title="Docker - Présentation">
-            Docker - Présentation (01_Presentation.slides.html)
-        </a>
-      </li>
-      <li>
-        <a href="02_Premiers_pas.slides.html" title="Docker - Premiers pas">
-            Docker - Premiers pas (02_Premiers_pas.slides.html)
-        </a>
-      </li>
-      <li>
-        <a href="03_Images_et_conteneurs.slides.html" title="Docker - Images et conteneurs">
-            Docker - Images et conteneurs (03_Images_et_conteneurs.slides.html)
-        </a>
-      </li>
-      <li>
-        <a href="04_Volumes_et_Networks.slides.html" title="Docker - Volumes et Networks">
-            Docker - Volumes et Networks (04_Volumes_et_Networks.slides.html)
-        </a>
-      </li>
-      <li>
-        <a href="05_Dockerfile.slides.html" title="Docker - DockerFile">
-            Docker - DockerFile (05_Dockerfile.slides.html)
-        </a>
-      </li>
-      <li>
-        <a href="06_Docker-Compose.slides.html" title="Docker - Docker Compose">
-            Docker - Docker Compose (06_Docker-Compose.slides.html)
-        </a>
-      </li>
-      <li>
-        <a href="99_template.slides.html" title="Template">
-            Template (99_template.slides.html)
-        </a>
-      </li>
-    </ul>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
 
-    <p>
-      Last update: 2023-11-09T15:40:39.414Z
-    </p>
+# Index
+
+- [Présentation](01_Presentation.slides.md)
+- [Premiers pas](02_Premiers_pas.slides.md)
+- [Images et Conteneurs](03_Images_et_conteneurs.slides.md)
+- [Volumes et Networks](04_Volumes_et_Networks.slides.md)
+- [Dockerfile](05_Dockerfile.slides.md)
+- [Docker Compose](06_Docker-Compose.slides.md)</script></section></div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {}, queryOptions);
+    </script>
+
+    <script src="./_assets/theme.js"></script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
   </body>
 </html>
