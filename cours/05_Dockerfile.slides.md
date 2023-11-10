@@ -148,7 +148,6 @@ docker build -t myimage:latest .
 
 > Attention à ne pas oublier le point !
 
-
 ----
 
 ## Dockerfile

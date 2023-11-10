@@ -243,36 +243,6 @@ services:
 ----
 
 ## Docker Compose
-### `monservice.build`
-
-```yaml
-services:
-  monservice:
-    build: ./chemin/vers/Dockerfile
-```
-
-- Indique le chemin vers le Dockerfile à utiliser
-- Equivalent du `docker build` d'un Dockerfile
-- Le fichier doit être présent dans le contexte courant
-
-----
-
-## Docker Compose
-### `monservice.contexte`
-
-```yaml
-services:
-  monservice:
-    context: ./chemin/vers/contexte
-```
-
-- Indique le chemin vers le contexte à utiliser
-- Permet de spécifier un contexte différent du répertoire courant
-- Equivalent du `docker build -f ./chemin/vers/Dockerfile` d'un Dockerfile
-
-----
-
-## Docker Compose
 ### `monservice.ports`
 
 ```yaml
@@ -356,6 +326,15 @@ services:
 ----
 
 ## Docker Compose
+### Commandes
+
+- `docker-compose up` : lance les conteneurs du contexte courant
+- `docker-compose up -d` : lance les conteneurs en mode détaché
+- `docker-compose down` : arrête et supprime les conteneurs du contexte courant
+
+----
+
+## Docker Compose
 ### Démonstration
 
 Docker run VS docker compose
@@ -365,4 +344,71 @@ Docker run VS docker compose
 ## Docker Compose
 ### A vous de jouer !
 
-Réalisez l'exercice 1
+Réalisez l'exercice 2.
+
+----
+
+## Docker Compose
+### `monservice.build`
+
+```yaml
+services:
+  monservice:
+    build: ./chemin/vers/Dockerfile
+```
+
+- Indique le chemin vers le Dockerfile à utiliser
+- Equivalent du `docker build` d'un Dockerfile
+- Le fichier doit être présent dans le contexte courant
+
+----
+
+## Docker Compose
+### `monservice.contexte`
+
+```yaml
+services:
+  monservice:
+    context: ./chemin/vers/contexte
+```
+
+- Indique le chemin vers le contexte à utiliser
+- Permet de spécifier un contexte différent du répertoire courant
+- Equivalent du `docker build -f ./chemin/vers/Dockerfile` d'un Dockerfile
+
+----
+
+## Docker Compose
+### `monservice.dockerfile`
+
+```yaml
+services:
+  monservice:
+    dockerfile: Dockerfile.dev
+```
+
+- Indique le nom du Dockerfile à utiliser
+- Permet de spécifier un Dockerfile différent de `Dockerfile`
+- Utile quand on a plusieurs dockerfile dans le même contexte
+
+----
+
+## Docker Compose
+### Rebuild
+
+- Docker conserve en cache les images buildées
+- Cela permet de ne pas avoir à tout refaire à chaque fois : il ne build que les couches modifiées
+- Concernant les docker-compose, il faut utiliser l'option `--build` pour lui indiquer explicitement de rebuild les images
+
+```shell
+docker-compose up --build
+```
+
+----
+
+## Docker Compose
+### A vous de jouer !
+
+Rendez vous sur ce [repository](https://github.com/Octocorn-Learning/docker-exercice3).
+Vous y trouverez les énoncés de l'exercice !
+
